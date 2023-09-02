@@ -67,13 +67,13 @@ func LoggerSlogWithCustomField(jsonLogger *slog.Logger) {
 	jsonLogger.Info("This is an Info message", slog.Int("test", 1))
 }
 
-func SetSlogDefaultLogger(jsonLogger *slog.Logger) {
+func SetSlogDefaultLogger() {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	slog.SetDefault(logger)
 	log.Println("Hello from old logger")
 }
 
-func SetChildLogger(jsonLogger *slog.Logger) {
+func SetChildLogger() {
 	handler := slog.NewJSONHandler(os.Stdout, nil)
 	buildInfo, _ := debug.ReadBuildInfo()
 
