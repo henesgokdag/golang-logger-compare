@@ -221,6 +221,19 @@ Log
 {"time":"2023-09-02T10:09:25.280487+03:00","level":"INFO","msg":"Hello from old logger"}
 ```
 
+### Pros
+
+- a more performant handler can be written because it has its own interface.
+
+- log/slog golang's internal library
+
+- In benchmarks, log/slog is more performant than apex and logrus libraries
+
+- SlogJsonHandler's number of allocations per operation value in tests with struct is much lower than other libraries
+
+Cons
+
+- Extremely slow compared to Zap in benchmarks.
 
 Sources
 
