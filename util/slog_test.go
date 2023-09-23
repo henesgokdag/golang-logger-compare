@@ -17,7 +17,7 @@ func BenchmarkSlogWithoutStruct(b *testing.B) {
 func BenchmarkSlogTextHandler(b *testing.B) {
 	slogTextLogger := getTextLogger()
 	for i := 0; i < b.N; i++ {
-		loggerSlogJsonHandler(slogTextLogger)
+		loggerSlogTextHandler(slogTextLogger)
 	}
 }
 

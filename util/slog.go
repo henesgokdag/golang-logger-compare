@@ -2,6 +2,8 @@ package util
 
 import (
 	"context"
+	"go.uber.org/zap"
+	"go.uber.org/zap/exp/zapslog"
 	"log"
 	"log/slog"
 	"os"
@@ -65,6 +67,46 @@ func loggerSlogJsonHandlerWithoutStruct(jsonLogger *slog.Logger) {
 func LoggerSlogWithCustomField(jsonLogger *slog.Logger) {
 	jsonLogger.Info("hello", "test", 1)
 	jsonLogger.Info("This is an Info message", slog.Int("test", 1))
+}
+
+type User struct {
+	ID        string `json:"id"`
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+	Email     string `json:"email"`
+	Password  string `json:"password"`
+}
+
+func (u *User) LogValue() slog.Value {
+	return slog.StringValue(u.ID)
+}
+
+func HidingSensitiveData() {
+	handler := slog.NewJSONHandler(os.Stdout, nil)
+	logger := slog.New(handler)
+
+	u := &User{
+		ID:        "user-12234",
+		FirstName: "Jan",
+		LastName:  "Doe",
+		Email:     "jan@example.com",
+		Password:  "pass-12334",
+	}
+
+	logger.Info("info", "user", u)
+}
+
+func UseSlogFrontendZapBackend() {
+	zapLogger := zap.Must(zap.NewProduction())
+
+	defer zapLogger.Sync()
+
+	logger := slog.New(zapslog.NewHandler(zapLogger.Core(), nil))
+
+	logger.Info(
+		"Using Slog frontend with Zap backend!",
+		slog.Int("process_id", os.Getpid()),
+	)
 }
 
 func SetSlogDefaultLogger() {

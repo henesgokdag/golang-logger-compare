@@ -13,6 +13,10 @@ func main() {
 	log.Println("--------")
 	util.LoggerWithCustomLevelsAndSource()
 	log.Println("--------")
+	util.HidingSensitiveData()
+	log.Println("--------")
+	util.UseSlogFrontendZapBackend()
+	log.Println("--------")
 	util.SetSlogDefaultLogger()
 	log.Println("--------")
 }

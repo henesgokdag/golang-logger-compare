@@ -7,6 +7,7 @@ require (
 	github.com/rs/zerolog v1.30.0
 	github.com/sirupsen/logrus v1.9.3
 	go.uber.org/zap v1.25.0
+	go.uber.org/zap/exp v0.2.0
 )
 
 require (
