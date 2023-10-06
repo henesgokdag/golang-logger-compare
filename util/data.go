@@ -29,13 +29,13 @@ type ExampleStruct struct {
 
 func getExampleData() ExampleStruct {
 	people := []Person{
-		{Name: "Ahmet", Age: 30, Address: "İstanbul"},
-		{Name: "Mehmet", Age: 25, Address: "Ankara"},
-		{Name: "Ayşe", Age: 28, Address: "İzmir"},
-		{Name: "Ayşe", Age: 28, Address: "İzmir"},
-		{Name: "Ayşe", Age: 28, Address: "İzmir"},
-		{Name: "Ayşe", Age: 28, Address: "İzmir"},
-		{Name: "Ayşe", Age: 28, Address: "İzmir"},
+		{Name: "John", Age: 30, Address: "London"},
+		{Name: "Michael", Age: 25, Address: "Manchester"},
+		{Name: "Jane", Age: 28, Address: "Liverpool"},
+		{Name: "Jane", Age: 28, Address: "Liverpool"},
+		{Name: "Jane", Age: 28, Address: "Liverpool"},
+		{Name: "Jane", Age: 28, Address: "Liverpool"},
+		{Name: "Jane", Age: 28, Address: "Liverpool"},
 	}
 
 	cars := []Car{
